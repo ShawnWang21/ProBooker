@@ -1,22 +1,22 @@
-//import { databases } from './appwrite.config'; // Importing the configured databases
+import {client} from '/app/lib/appwrite.config'; // Importing the configured databases
 
 const sdk = require('node-appwrite');
 
-const client = new sdk.Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('668c983e00031858db3b') // Your project ID
-    .setKey(); // Your secret API key
+// const client = new sdk.Client()
+//     .setEndpoint(Endpoint) // Your API Endpoint
+//     .setProject(PROJECT_ID) // Your project ID
+//     .setKey(API_KEY); // Your secret API key
 
 const users = new sdk.Users(client);
 
 async function createUser() {
     try {
         const result = await users.create(
-            'user1',
-            'user1@example.com',
-            '+12345678900',
+            'user2',
+            'user2@example.com',
+            '+12325678900',
             ';lsdafj1',
-            'User One',
+            'User Two',
         );
         console.log('User created successfully:', result);
     } catch (error) {
@@ -26,17 +26,17 @@ async function createUser() {
 
 createUser();
 
-import { createUser } from '@services/dbOperations';
+// import { createUser } from '@services/dbOperations';
 
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const { username, email, password, isServiceProvider } = req.body;
-    const user = await createUser(username, email, password, isServiceProvider);
-    res.status(201).json(user);
-  } else {
-    res.status(405).json({ error: 'Method Not Allowed' });
-  }
-}
+// export default async function handler(req, res) {
+//   if (req.method === 'POST') {
+//     const { username, email, password, isServiceProvider } = req.body;
+//     const user = await createUser(username, email, password, isServiceProvider);
+//     res.status(201).json(user);
+//   } else {
+//     res.status(405).json({ error: 'Method Not Allowed' });
+//   }
+// }
 
 
 // import { ID } from 'node-appwrite';
